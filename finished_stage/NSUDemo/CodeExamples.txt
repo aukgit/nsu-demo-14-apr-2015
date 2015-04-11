@@ -1,0 +1,1 @@
+﻿Enable-Migrations -ContextTypeName NSUDemo.Models.EntityDatabase -force
