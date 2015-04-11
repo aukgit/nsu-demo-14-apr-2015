@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NSUDemo.Models;
 
 namespace NSUDemo.Controllers {
-    public class EventController : Controller {
+    public class EventsController : Controller {
 
         private EntityDatabase db = new EntityDatabase();
-        void GetDropDown() {
-            ViewBag.EventCategoryId = new SelectList(db.EventCategories.ToList(), "EventCategoryId", "EventCategoryName");
+
+
+
+        void GetDropDown(int? id) {
+            ViewBag.Categories = db.EventCategories.ToList();
+
+            if (id == null) {
+                ViewBag.EventCategoryID = new SelectList(ViewBag.Categories, "EventCategoryID",
+                    "EventCategoryName");
+            } else {
+                ViewBag.EventCategoryID = new SelectList(ViewBag.Categories, "EventCategoryID",
+                    "EventCategoryName", id);
+            }
         }
         public ActionResult Index() {
             var events = db.Events.ToList();
+            
             return View(events);
         }
 
@@ -24,7 +37,7 @@ namespace NSUDemo.Controllers {
 
         // GET: Event/Create
         public ActionResult Create() {
-            GetDropDown();
+            GetDropDown(null);
             return View();
         }
 
@@ -45,15 +58,20 @@ namespace NSUDemo.Controllers {
 
         // GET: Event/Edit/5
         public ActionResult Edit(int id) {
-            return View();
+            GetDropDown(id);
+            var @event = db.Events.Find(id);
+            return View(@event);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection) {
+        public ActionResult Edit(Event @event) {
             try {
-                // TODO: Add update logic here
-
+                if (ModelState.IsValid) {
+                    db.Entry(@event).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
                 return RedirectToAction("Index");
             } catch {
                 return View();
