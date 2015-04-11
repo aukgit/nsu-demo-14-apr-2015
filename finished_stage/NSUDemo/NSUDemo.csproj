@@ -235,6 +235,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -281,6 +282,7 @@
     <Content Include="Content\CSS\less-imports.css" />
     <Content Include="Content\CSS\lesshat.css" />
     <Content Include="Content\CSS\override-mvc.css" />
+    <Content Include="Content\CSS\utilities.css" />
     <Content Include="Content\CSS\variables.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -659,6 +661,9 @@
     </Content>
     <Content Include="Content\CSS\override-mvc.css.map">
       <DependentUpon>override-mvc.css</DependentUpon>
+    </Content>
+    <Content Include="Content\CSS\utilities.css.map">
+      <DependentUpon>utilities.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Icon.png" />
@@ -1170,10 +1175,13 @@
     <Content Include="Views\Shared\EditorTemplates--\Decimal.cshtml" />
     <Content Include="Views\Shared\EditorTemplates--\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates--\Boolean.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Basic\GiveView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Event\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
