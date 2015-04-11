@@ -36,6 +36,7 @@ textarea {
   resize: none;
   border: 2px solid #D4ECF3;
   background-color: #FDFDFD;
+  width: 100%;
 }
 textarea:focus,
 input[type="text"]:focus,
