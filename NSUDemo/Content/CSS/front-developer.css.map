@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "front-developer.css",
+  "sources": [
+    "../../front-developer.less"
+  ],
+  "names": [],
+  "mappings": "AAIA;EACI,aAAa,8CAAb;EACA,4CAAA;;AAGJ;EACI,cAAA;;AAGJ;EACI,cAAA"
+}
